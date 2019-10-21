@@ -117,7 +117,8 @@ void calc(int index, double y, double z)
     //=========================================================
     // Tan
     case 7:
-        printf("%.4lf\n", tan(y));
+        z = y * TOANGLE;
+        printf("Tangent of %.2lf degrees is %.4lf\n", y, tan(z));
         break;
     //=========================================================
     // Tanh

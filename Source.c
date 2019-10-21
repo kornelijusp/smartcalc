@@ -42,19 +42,25 @@ void calc();
 //=================- MAIN -=========================
 int main(int argc, char *argv[])
 {
-    double number;
+    double number, numbery;
 
     for (int i = 0; i < operationAmount; i++)
     {
         if (strcmp(operation[i], argv[1]) == 0)
         {
-            if (i != 15)
+            if (i != 15 && i != 13)
             {
                 number = atof(argv[2]);
-                calc(i, number);
+                calc(i, number, 0);
             }
-            //else
-               // calc(i, 0);
+            else if (i == 13)
+            {
+                number = atof(argv[2]);
+                numbery = atof(argv[3]);
+                calc(i, number, numbery);
+            }
+            else
+                calc(i, 0, 0);
         }
     }
 
@@ -62,28 +68,82 @@ int main(int argc, char *argv[])
 }
 //==============================================
 // Switch calculation functions
-void calc(int x, double y)
+void calc(int index, double y, double z)
 {
-    double rez;
-    switch (x)
+    switch (index)
     {
-    //=========================================================
+    // =========================================================
+    // Floor
     case 0:
-        printf("Double floor(double x) returns the largest integer value less than or equal to x.\n\n PARAMETER\n x = This is the floating point value.\n\n");
-        rez = floor(y);
-        printf("\n\nlargest integral value not greater than %.2lf : %.0lf", y, rez);
+        printf("%.2lf\n", floor(y));
         break;
-        //=========================================================
+    //=========================================================
+    case 1:
+        printf("%.0lf\n", round(y));
+        break;
+    //=========================================================
+    case 2:
+        printf("%.0lf\n", ceil(y));
+        break;
+    //=========================================================
+    case 3:
+        printf("%.4lf\n", sin(y));
+        break;
+    //=========================================================
+    case 4:
+        printf("%.4lf\n", cos(y));
+        break;
+    //=========================================================
+    case 5:
+        printf("%.4lf\n", cosh(y));
+        break;
+    //=========================================================
+    case 6:
+        printf("%.4lf\n", exp(y));
+        break;
+    //=========================================================
+    case 7:
+        printf("%.4lf\n", tan(y));
+        break;
+    //=========================================================
+    case 8:
+        printf("%.4lf\n", tanh(y));
+        break;
+    //=========================================================
+    case 9:
+        printf("%.4lf\n", sinh(y));
+        break;
+    //=========================================================
+    case 10:
+        printf("%.4lf\n", log(y));
+        break;
+    //=========================================================
+    case 11:
+        printf("%.4lf\n", log10(y));
+        break;
+    //=========================================================
+    case 12:
+        printf("%.4lf\n", sqrt(y));
+        break;
+    //=========================================================
+    case 13:
+        printf("%.2lf\n", pow(y, z));
+        break;
+    //=========================================================
+    case 14:
+        printf("%.0lf\n", trunc(y));
+        break;
+    //=========================================================
     case 15:
         printf("----- Help -----\n");
         printf("This is smart calculator\n\n");
         printf("smartcal <operation> <double x>\n\n");
         printf("Operation list\n");
-        printf("1) floor\n2) round\n3) ceil\n4) sin\n5) cos\n6) cosh\n"
-               "7) exp\n8) tan\n9) tanh\n10) sinh\n11) log\n12) log10\n"
-               "13) sqrt\n14) pow\n15) trunc\n");
+        printf("floor\nround\nceil\nsin\ncos\ncosh\n"
+               "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
+               "sqrt\npow\ntrunc\n");
         break;
-
+        //=====================================================
     default:
         printf("Write --help for help\n");
         break;

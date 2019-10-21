@@ -16,6 +16,10 @@
 #include <math.h>
 
 // =========================================
+#define TORAD 180.0 / M_PI;
+#define TOANGLE M_PI / 180.0;
+
+// =========================================
 #define operationAmount 16
 // Operation list
 char *operation[operationAmount] = {
@@ -70,6 +74,7 @@ int main(int argc, char *argv[])
 // Switch calculation functions
 void calc(int index, double y, double z)
 {
+    int y1;
     switch (index)
     {
     // =========================================================
@@ -78,62 +83,79 @@ void calc(int index, double y, double z)
         printf("Largest integer value less than or equal to %.2lf is %.2lf\n", y, floor(y));
         break;
     //=========================================================
+    // Round
     case 1:
-        printf("%.0lf\n", round(y));
+        printf("round of  %.2lf is  %lf\n", y, round(y));
         break;
     //=========================================================
+    // Ceil
     case 2:
-        printf("%.0lf\n", ceil(y));
+        printf("Smallest integer value greater than or equal to %.2lf is %.0lf\n", y, ceil(y));
         break;
     //=========================================================
+    // Sin
     case 3:
-        printf("%.4lf\n", sin(y));
+        z = y * TOANGLE;
+        printf("Sin value for %.2lf degrees equals to %.4lf\n", y, sin(z));
         break;
     //=========================================================
+    // Cos
     case 4:
-        printf("%.4lf\n", cos(y));
+        z = y * TOANGLE;
+        printf("The cosine of %.2lf is %.4lf degrees\n", y, cos(z));
         break;
     //=========================================================
+    // Cosh
     case 5:
-        printf("%.4lf\n", cosh(y));
+        printf("The hyperbolic cosine of %.2lf is %.4lf\n", y, cosh(y));
         break;
     //=========================================================
+    // Exp
     case 6:
-        printf("%.4lf\n", exp(y));
+        printf("The exponential value of %.2lf is %.4lf\n", y, exp(y));
         break;
     //=========================================================
+    // Tan
     case 7:
         printf("%.4lf\n", tan(y));
         break;
     //=========================================================
+    // Tanh
     case 8:
         printf("%.4lf\n", tanh(y));
         break;
     //=========================================================
+    // Sinh
     case 9:
         printf("%.4lf\n", sinh(y));
         break;
     //=========================================================
+    // Log
     case 10:
         printf("%.4lf\n", log(y));
         break;
     //=========================================================
+    // Log10
     case 11:
         printf("%.4lf\n", log10(y));
         break;
     //=========================================================
+    // Sqrt
     case 12:
         printf("%.4lf\n", sqrt(y));
         break;
     //=========================================================
+    // Pow
     case 13:
         printf("%.2lf\n", pow(y, z));
         break;
     //=========================================================
+    // Trunc
     case 14:
         printf("%.0lf\n", trunc(y));
         break;
     //=========================================================
+    // Help
     case 15:
         printf("----- Help -----\n");
         printf("This is smart calculator\n\n");

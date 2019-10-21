@@ -75,7 +75,7 @@ void calc(int index, double y, double z)
     // =========================================================
     // Floor
     case 0:
-        printf("%.2lf\n", floor(y));
+        printf("Largest integer value less than or equal to %.2lf is %.2lf\n", y, floor(y));
         break;
     //=========================================================
     case 1:
@@ -137,9 +137,9 @@ void calc(int index, double y, double z)
     case 15:
         printf("----- Help -----\n");
         printf("This is smart calculator\n\n");
-        printf("smartcal <operation> <double x>\n\n");
+        printf("smartcal <operation> <double x> <double y>\n\n");
         printf("Operation list\n");
-        printf("floor\nround\nceil\nsin\ncos\ncosh\n"
+        printf("floor (double <x>)\nround\nceil\nsin\ncos\ncosh\n"
                "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
                "sqrt\npow\ntrunc\n");
         break;

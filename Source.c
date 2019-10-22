@@ -6,6 +6,10 @@
  *        EAf-19        *
  *                      *
  ***********************/
+/*
+* This program allows you to calculate certain mathematical functions
+*
+*/
 
 #define _USE_MATH_DEFINES
 
@@ -40,8 +44,28 @@ char *operation[operationAmount] = {
     "trunc",
     "--help"};
 // =========================================
+// Enumeration
+enum operations
+{
+    Floor,
+    Round,
+    Ceil,
+    Sin,
+    Cos,
+    Cosh,
+    Exp,
+    Tan,
+    Tanh,
+    Sinh,
+    Log,
+    Log10,
+    Sqrt,
+    Pow,
+    Trunc
+};
+//==========================================
 // All functions
-void calc();
+void calc(int index, double y, double z);
 
 //=================- MAIN -=========================
 int main(int argc, char *argv[])
@@ -50,23 +74,33 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < operationAmount; i++)
     {
-        if (strcmp(operation[i], argv[1]) == 0)
+        if (!strcmp(operation[i], argv[1]))
         {
             if (i != 15 && i != 13)
             {
                 number = atof(argv[2]);
                 calc(i, number, 0);
             }
-            else if (i == 13)
+            else
             {
                 number = atof(argv[2]);
                 numbery = atof(argv[3]);
                 calc(i, number, numbery);
             }
-            else
-                calc(i, 0, 0);
         }
     }
+
+ // Help
+    // case 15:
+    //     printf("----- Help -----\n");
+    //     printf("This is smart calculator\n\n");
+    //     printf("smartcal <operation> <double x> <double y>\n\n");
+    //     printf("Operation list\n");
+    //     printf("floor (double <x>)\nround\nceil\nsin\ncos\ncosh\n"
+    //            "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
+    //            "sqrt\npow\ntrunc\n");
+    //     break;
+        //=====================================================
 
     return 0;
 }
@@ -74,99 +108,91 @@ int main(int argc, char *argv[])
 // Switch calculation functions
 void calc(int index, double y, double z)
 {
-    int y1;
-    switch (index)
+    
+    enum operations oper = index;
+
+    switch (oper)
     {
     // =========================================================
     // Floor
-    case 0:
+    case Floor:
         printf("Largest integer value less than or equal to %.2lf is %.2lf\n", y, floor(y));
         break;
     //=========================================================
     // Round
-    case 1:
+    case Round:
         printf("round of  %.2lf is  %lf\n", y, round(y));
         break;
     //=========================================================
     // Ceil
-    case 2:
+    case Ceil:
         printf("Smallest integer value greater than or equal to %.2lf is %.0lf\n", y, ceil(y));
         break;
     //=========================================================
     // Sin
-    case 3:
+    case Sin:
         z = y * TOANGLE;
         printf("Sin value for %.2lf degrees equals to %.4lf\n", y, sin(z));
         break;
     //=========================================================
     // Cos
-    case 4:
+    case Cos:
         z = y * TOANGLE;
         printf("The cosine of %.2lf is %.4lf degrees\n", y, cos(z));
         break;
     //=========================================================
     // Cosh
-    case 5:
+    case Cosh:
         printf("The hyperbolic cosine of %.2lf is %.4lf\n", y, cosh(y));
         break;
     //=========================================================
     // Exp
-    case 6:
+    case Exp:
         printf("The exponential value of %.2lf is %.4lf\n", y, exp(y));
         break;
     //=========================================================
     // Tan
-    case 7:
+    case Tan:
         z = y * TOANGLE;
         printf("Tangent of %.2lf degrees is %.4lf\n", y, tan(z));
         break;
     //=========================================================
     // Tanh
-    case 8:
+    case Tanh:
         printf("The hyperbolic tangent of %.2lf is %.2lf degrees\n", y, tanh(y));
         break;
     //=========================================================
     // Sinh
-    case 9:
+    case Sinh:
         printf("The hyperbolic sine of %lf is %lf degrees\n", y, sinh(y));
         break;
     //=========================================================
     // Log
-    case 10:
+    case Log:
         printf("log(%.2lf) = %.2lf\n", y, log(y));
         break;
     //=========================================================
     // Log10
-    case 11:
+    case Log10:
         printf("log10(%.2lf) = %.2lf\n", y, log10(y));
         break;
     //=========================================================
     // Sqrt
-    case 12:
+    case Sqrt:
         printf("Square root of %.2lf is %.2lf\n", y, sqrt(y));
         break;
     //=========================================================
     // Pow
-    case 13:
+    case Pow:
         printf("%.2lf ^ %.2lf = %lf\n", y, z, pow(y, z));
         break;
     //=========================================================
     // Trunc
-    case 14:
+    case Trunc:
         printf("Truncated value of %.2lf is %.0lf\n", y, trunc(y));
         break;
     //=========================================================
-    // Help
-    case 15:
-        printf("----- Help -----\n");
-        printf("This is smart calculator\n\n");
-        printf("smartcal <operation> <double x> <double y>\n\n");
-        printf("Operation list\n");
-        printf("floor (double <x>)\nround\nceil\nsin\ncos\ncosh\n"
-               "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
-               "sqrt\npow\ntrunc\n");
-        break;
-        //=====================================================
+   
     default:
         printf("Write --help for help\n");
         break;

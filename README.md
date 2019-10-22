@@ -6,8 +6,8 @@ Firs GitHub project!
 This utility allows you to calculate certain mathematical functions
 
 Mathematical functions list:
-floor
-round
+floor\n
+round\n
 ceil
 sin
 cos

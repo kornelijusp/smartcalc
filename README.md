@@ -1,9 +1,8 @@
 # Smartcalc
-Assessment Task for university
-
+Assessment Task for university.
 Firs GitHub project!
 
-This utility allows you to calculate certain mathematical functions
+#### This utility allows you to calculate certain mathematical functions
 
 ### Mathematical functions list:
 ```
@@ -23,5 +22,5 @@ sqrt
 pow
 trunc
 ```
-
+## Help
 If you dont know how to use these function write "smartcalc --help" into cmd(Windows), "./smartcalc --help" terminal(Linux)

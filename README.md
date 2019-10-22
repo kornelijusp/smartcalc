@@ -6,8 +6,9 @@ Firs GitHub project!
 This utility allows you to calculate certain mathematical functions
 
 Mathematical functions list:
-floor\n
-round\n
+```
+floor
+round
 ceil
 sin
 cos
@@ -21,5 +22,6 @@ log10
 sqrt
 pow
 trunc
+```
 
 If you dont know how to use these function write "smartcalc --help" into cmd(Windows), "./smartcalc --help" terminal(Linux)

@@ -123,37 +123,37 @@ void calc(int index, double y, double z)
     //=========================================================
     // Tanh
     case 8:
-        printf("%.4lf\n", tanh(y));
+        printf("The hyperbolic tangent of %.2lf is %.2lf degrees\n", y, tanh(y));
         break;
     //=========================================================
     // Sinh
     case 9:
-        printf("%.4lf\n", sinh(y));
+        printf("The hyperbolic sine of %lf is %lf degrees\n", y, sinh(y));
         break;
     //=========================================================
     // Log
     case 10:
-        printf("%.4lf\n", log(y));
+        printf("log(%.2lf) = %.2lf\n", y, log(y));
         break;
     //=========================================================
     // Log10
     case 11:
-        printf("%.4lf\n", log10(y));
+        printf("log10(%.2lf) = %.2lf\n", y, log10(y));
         break;
     //=========================================================
     // Sqrt
     case 12:
-        printf("%.4lf\n", sqrt(y));
+        printf("Square root of %.2lf is %.2lf\n", y, sqrt(y));
         break;
     //=========================================================
     // Pow
     case 13:
-        printf("%.2lf\n", pow(y, z));
+        printf("%.2lf ^ %.2lf = %lf\n", y, z, pow(y, z));
         break;
     //=========================================================
     // Trunc
     case 14:
-        printf("%.0lf\n", trunc(y));
+        printf("Truncated value of %.2lf is %.0lf\n", y, trunc(y));
         break;
     //=========================================================
     // Help

@@ -64,9 +64,9 @@ enum operations
 };
 //==========================================
 // All functions
-void calc(int index, double y, double z, int err);
-// err = 0 Calculator
-// err = 1 Show explanation
+void help(int x);
+void calc(int index, double y, double z);
+
 //=================- MAIN -=========================
 int main(int argc, char *argv[])
 {
@@ -75,53 +75,73 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < operationAmount - 1; i++)
     {
+        if (i != 0)
+            state = 1;
 
-        if (!strcmp(operation[i], argv[1]))
+        if (!strcmp(operation[i], argv[1]) && atof(argv[2]))
         {
-            //====
-            if (!strcmp("--help", argv[2]))
-            {
-                // Show operation explanation
-                calc(i, 0, 0, 1);
-            }
-            //====
-            if (i != 13 && atof(argv[2]))
+            if (i != 13)
             {
                 number = atof(argv[2]);
-                calc(i, number, 0, 0);
+                calc(i, number, 0);
             }
-            else if (atof(argv[2]))
+            else
             {
                 number = atof(argv[2]);
                 numbery = atof(argv[3]);
-                calc(i, number, numbery, 0);
+                calc(i, number, numbery);
             }
             state = 1;
         }
-        else if (!strcmp("--help", argv[1]))
+        else if (!strcmp(argv[1], "--help"))
         {
-
-            printf("----- Help -----\n");
-            printf("This is smart calculator\n\n");
-            printf("More information about operations\n");
-            printf("Smartcalc <operation> --help\n\n");
-            printf("Smartcalc <operation> <double x> <double y>\n\n");
-            printf("Operation list\n");
-            printf("floor\nround\nceil\nsin\ncos\ncosh\n"
-                   "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
-                   "sqrt\npow\ntrunc\n");
+            help(16);
             state = 1;
-            break;
         }
+
+        else if (!strcmp(operation[i], argv[1]) && !strcmp(argv[2], "--help"))
+        {
+            help(i);
+            state = 1;
+        }
+
+        else if (state == 0)
+            printf("Write --help for help\n");
     }
-    if (state == 0)
-        printf("Write --help for help\n");
 
     return 0;
 }
 // =============================================
+void help(int x)
+{
+    if (x == 16)
+    {
+        printf("----- Help -----\n");
+        printf("This is smart calculator\n\n");
+        printf("More information about operations\n");
+        printf("Smartcalc <operation> --help\n\n");
+        printf("Smartcalc <operation> <double x> <double y>\n\n");
+        printf("Operation list\n");
+        printf("floor\nround\nceil\nsin\ncos\ncosh\n"
+               "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
+               "sqrt\npow\ntrunc\n");
+    }
+
+    enum operations oper = x;
+    // Help
+    switch (oper)
+    {
+    case Floor:
+        printf("Floor help\n");
+        break;
+
+    default:
+        break;
+    }
+}
+//==============================================
 // Switch calculation functions
-void calc(int index, double y, double z, int err)
+void calc(int index, double y, double z)
 {
 
     enum operations oper = index;
@@ -131,19 +151,12 @@ void calc(int index, double y, double z, int err)
     // =========================================================
     // Floor
     case Floor:
-        if (!err)
-            printf("Largest integer value less than or equal to %.2lf is %.2lf\n", y, floor(y));
-        else
-            printf("Double floor(double x) returns the largest integer value less than or equal to x.\n");
+        printf("Largest integer value less than or equal to %.2lf is %.2lf\n", y, floor(y));
         break;
     //=========================================================
     // Round
     case Round:
-        if (!err)
-            printf("round of  %.2lf is  %lf\n", y, round(y));
-        else
-            printf("Double Round(double x) returns the nearest integer value of the double\n");
-
+        printf("round of  %.2lf is  %lf\n", y, round(y));
         break;
     //=========================================================
     // Ceil

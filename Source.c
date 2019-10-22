@@ -6,8 +6,7 @@
  *        EAf-19        *
  *                      *
  ***********************/
-/*
-* This program allows you to calculate certain mathematical functions
+/* This program allows you to calculate certain mathematical functions
 *
 */
 
@@ -65,18 +64,23 @@ enum operations
 };
 //==========================================
 // All functions
+void help(int x);
 void calc(int index, double y, double z);
 
 //=================- MAIN -=========================
 int main(int argc, char *argv[])
 {
     double number, numbery;
+    int state = 0;
 
-    for (int i = 0; i < operationAmount; i++)
+    for (int i = 0; i < operationAmount - 1; i++)
     {
-        if (!strcmp(operation[i], argv[1]))
+        if (i != 0)
+            state = 1;
+            
+        if (!strcmp(operation[i], argv[1]) && atof(argv[2]))
         {
-            if (i != 15 && i != 13)
+            if (i != 13)
             {
                 number = atof(argv[2]);
                 calc(i, number, 0);
@@ -87,28 +91,59 @@ int main(int argc, char *argv[])
                 numbery = atof(argv[3]);
                 calc(i, number, numbery);
             }
+            state = 1;
         }
+        else if (!strcmp(argv[1], "--help"))
+        {
+            help(16);
+            state = 1;
+        }
+
+        else if (!strcmp(operation[i], argv[1]) && !strcmp(argv[2], "--help"))
+        {
+            help(i);
+            state = 1;
+        }
+
+        else if (state == 0)
+            printf("Write --help for help\n");
     }
 
- // Help
-    // case 15:
-    //     printf("----- Help -----\n");
-    //     printf("This is smart calculator\n\n");
-    //     printf("smartcal <operation> <double x> <double y>\n\n");
-    //     printf("Operation list\n");
-    //     printf("floor (double <x>)\nround\nceil\nsin\ncos\ncosh\n"
-    //            "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
-    //            "sqrt\npow\ntrunc\n");
-    //     break;
-        //=====================================================
-
     return 0;
+}
+// =============================================
+void help(int x)
+{
+    if (x == 16)
+    {
+        printf("----- Help -----\n");
+        printf("This is smart calculator\n\n");
+        printf("More information about operations\n");
+        printf("Smartcalc <operation> --help\n\n");
+        printf("Smartcalc <operation> <double x> <double y>\n\n");
+        printf("Operation list\n");
+        printf("floor\nround\nceil\nsin\ncos\ncosh\n"
+               "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
+               "sqrt\npow\ntrunc\n");
+    }
+
+    enum operations oper = x;
+    // Help
+    switch (oper)
+    {
+    case Floor:
+        printf("Floor help\n");
+        break;
+
+    default:
+        break;
+    }
 }
 //==============================================
 // Switch calculation functions
 void calc(int index, double y, double z)
 {
-    
+
     enum operations oper = index;
 
     switch (oper)
@@ -191,8 +226,8 @@ void calc(int index, double y, double z)
     case Trunc:
         printf("Truncated value of %.2lf is %.0lf\n", y, trunc(y));
         break;
-    //=========================================================
-   
+        //=========================================================
+
     default:
         printf("Write --help for help\n");
         break;

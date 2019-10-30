@@ -114,7 +114,8 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    if (state == 0)
+
+    if (!state)
         printf("Write --help for help\n");
 
     return 0;
@@ -151,70 +152,113 @@ void calc(int index, double y, double z, int err)
         if (!err)
             printf("Smallest integer value greater than or equal to %.2lf is %.0lf\n", y, ceil(y));
         else
-            printf("help");
+            printf("Double ceil(double x) returns the smallest integer value greater than or equal to x.\n");
         break;
     //=========================================================
     // Sin
     case Sin:
-        z = y * TOANGLE;
-        printf("Sin value for %.2lf degrees equals to %.4lf\n", y, sin(z));
+        if (!err)
+        {
+            z = y * TOANGLE;
+            printf("Sin value for %.2lf degrees equals to %.4lf\n", y, sin(z));
+        }
+        else
+            printf("double sin(double x) returns the sine of a radian angle x\n");
         break;
     //=========================================================
     // Cos
     case Cos:
-        z = y * TOANGLE;
-        printf("The cosine of %.2lf is %.4lf degrees\n", y, cos(z));
+        if (!err)
+        {
+            z = y * TOANGLE;
+            printf("The cosine of %.2lf is %.4lf degrees\n", y, cos(z));
+        }
+        else
+            printf("Double cos(double x) returns the cosine of a radian angle x\n");
         break;
     //=========================================================
     // Cosh
     case Cosh:
-        printf("The hyperbolic cosine of %.2lf is %.4lf\n", y, cosh(y));
+        if (!cosh)
+            printf("The hyperbolic cosine of %.2lf is %.4lf\n", y, cosh(y));
+        else
+            printf("Double cosh(double x) returns the hypebolic cosine of x\n");
         break;
     //=========================================================
     // Exp
     case Exp:
-        printf("The exponential value of %.2lf is %.4lf\n", y, exp(y));
+        if (!err)
+            printf("The exponential value of %.2lf is %.4lf\n", y, exp(y));
+        else
+            printf("Double exp(double x) returns the value of e raised to the xth power\n");
+
         break;
     //=========================================================
     // Tan
     case Tan:
-        z = y * TOANGLE;
-        printf("Tangent of %.2lf degrees is %.4lf\n", y, tan(z));
+        if (!err)
+        {
+            z = y * TOANGLE;
+            printf("Tangent of %.2lf degrees is %.4lf\n", y, tan(z));
+        }
+        else
+            printf("Returns the tangent of an angle of x radians\n");
         break;
     //=========================================================
     // Tanh
     case Tanh:
-        printf("The hyperbolic tangent of %.2lf is %.2lf degrees\n", y, tanh(y));
+        if (!err)
+            printf("The hyperbolic tangent of %.2lf is %.2lf degrees\n", y, tanh(y));
+        else
+            printf("Double tanh(double x) returns the hyperbolic tangent of x\n");
         break;
     //=========================================================
     // Sinh
     case Sinh:
-        printf("The hyperbolic sine of %lf is %lf degrees\n", y, sinh(y));
+        if (!err)
+            printf("The hyperbolic sine of %lf is %lf degrees\n", y, sinh(y));
+        else
+            printf("Double sinh(double x) returns the hyperbolic sine of x\n");
         break;
     //=========================================================
     // Log
     case Log:
-        printf("log(%.2lf) = %.2lf\n", y, log(y));
+        if (!err)
+            printf("log(%.2lf) = %.2lf\n", y, log(y));
+        else
+            printf("Double log(double x) returns the natural logarithm (base-e logarithm) of x\n");
         break;
     //=========================================================
     // Log10
     case Log10:
-        printf("log10(%.2lf) = %.2lf\n", y, log10(y));
+        if (!err)
+            printf("log10(%.2lf) = %.2lf\n", y, log10(y));
+        else
+            printf("Double log10(double x) returns the common logarithm (base-10 logarithm) of x\n");
         break;
     //=========================================================
     // Sqrt
     case Sqrt:
-        printf("Square root of %.2lf is %.2lf\n", y, sqrt(y));
+        if (!err)
+            printf("Square root of %.2lf is %.2lf\n", y, sqrt(y));
+        else
+            printf("Double sqrt(double x) returns the square root of x\n");
         break;
     //=========================================================
     // Pow
     case Pow:
-        printf("%.2lf ^ %.2lf = %lf\n", y, z, pow(y, z));
+        if (!err)
+            printf("%.2lf ^ %.2lf = %lf\n", y, z, pow(y, z));
+        else
+            printf("Double pow(double x, double y) returns x raised to the power of y i.e. xy\n");
         break;
     //=========================================================
     // Trunc
     case Trunc:
-        printf("Truncated value of %.2lf is %.0lf\n", y, trunc(y));
+        if (!err)
+            printf("Truncated value of %.2lf is %.0lf\n", y, trunc(y));
+        else
+            printf("This function truncates the decimal value from floating point value and returns integer value\n");
         break;
         //=========================================================
 

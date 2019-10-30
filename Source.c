@@ -148,7 +148,10 @@ void calc(int index, double y, double z, int err)
     //=========================================================
     // Ceil
     case Ceil:
-        printf("Smallest integer value greater than or equal to %.2lf is %.0lf\n", y, ceil(y));
+        if (!err)
+            printf("Smallest integer value greater than or equal to %.2lf is %.0lf\n", y, ceil(y));
+        else
+            printf("help");
         break;
     //=========================================================
     // Sin

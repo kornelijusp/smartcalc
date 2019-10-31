@@ -175,11 +175,11 @@ void calc(int index, double y, double z, int err)
         }
         else
             printf("Double cos(double x) returns the cosine of a radian angle x\n");
-        break;
+        break; 
     //=========================================================
     // Cosh
     case Cosh:
-        if (!cosh)
+        if (!err)
             printf("The hyperbolic cosine of %.2lf is %.4lf\n", y, cosh(y));
         else
             printf("Double cosh(double x) returns the hypebolic cosine of x\n");

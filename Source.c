@@ -6,13 +6,22 @@
  *        EAf-19        *
  *                      *
  ***********************/
- /* This program allows you to calculate certain mathematical functions
- *  CMD calculator
+/* 
+ * This program allows you to calculate certain mathematical functions.
+ * CMD calculator
+ * Command line utility.
+ * 
+ * Syntax
+ * =================================================================
+ * smartcalc <operation> name> <x> <y> CALCULATOR
+ * smartcalc <operation> --help Specific explanation of operation
+ * smartcalc --help List of operations
+ * =================================================================
  */
 
 #define _USE_MATH_DEFINES
 
- // Library list
+// Library list
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -41,7 +50,7 @@ char *operation[operationAmount] = {
 	"sqrt",
 	"pow",
 	"trunc",
-	"--help" };
+	"--help"};
 // =========================================
 // Enumeration
 enum operations
@@ -67,6 +76,7 @@ enum operations
 void calc(int index, double y, double z, int err);
 // err = 0 Calculator
 // err = 1 Show explanation
+
 //=================- MAIN -=========================
 int main(int argc, char *argv[])
 {
@@ -112,8 +122,8 @@ int main(int argc, char *argv[])
 			printf("Smartcalc <operation> <double x> <double y>\n\n");
 			printf("Operation list\n");
 			printf("floor\nround\nceil\nsin\ncos\ncosh\n"
-				"exp\ntan\ntanh\nsinh\nlog\nlog10\n"
-				"sqrt\npow\ntrunc\n");
+				   "exp\ntan\ntanh\nsinh\nlog\nlog10\n"
+				   "sqrt\npow\ntrunc\n");
 			state = 1;
 			break;
 		}

@@ -6,7 +6,10 @@
  *        EAf-19        *
  *                      *
  ***********************/
-/* 
+/**
+ * @file Source.c
+ * @author Kornelijus Petronis
+ * @date 4 Nov 2019 
  * This program allows you to calculate certain mathematical functions.
  * CMD calculator
  * Command line utility.
@@ -18,6 +21,7 @@
  * smartcalc --help List of operations
  * =================================================================
  */
+
 
 #define _USE_MATH_DEFINES
 
@@ -80,7 +84,7 @@ void calc(int index, double y, double z, int err);
 //=================- MAIN -=========================
 int main(int argc, char *argv[])
 {
-	double number, numbery;
+	double number, numbery; /** x and y values for calculator*/
 	int state = 0;
 
 	for (int i = 0; i < operationAmount - 1; i++)
@@ -134,8 +138,17 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+
 // =============================================
 // Switch calculation functions
+/**
+ * @brief Calculator function
+ * 
+ * @param index 
+ * @param y 
+ * @param z 
+ * @param err 
+ */
 void calc(int index, double y, double z, int err)
 {
 
